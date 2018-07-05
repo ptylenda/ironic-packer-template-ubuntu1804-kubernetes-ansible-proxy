@@ -1,6 +1,6 @@
-# ironic-packer-template-ubuntu1804-ansible-proxy
+# ironic-packer-template-ubuntu1804-kubernetes-ansible-proxy
 
-[Packer](https://www.packer.io/) template for Ubuntu Server 18.04 [Vagrant](https://www.vagrantup.com/) boxes, capable of Ansible provisioning behind a proxy. Example playbook for deploying Docker with proxy settings has been provided. Provisioning uses classical preseed config files (not new Subiquity installer). Optimized for building qcow2 images for Ironic using QEMU.
+[Packer](https://www.packer.io/) template for Ubuntu Server 18.04 [Vagrant](https://www.vagrantup.com/) boxes, aimed at deploying Kubernetes node, capable of Ansible provisioning behind a proxy. Simple playbook for updating proxy settings has been provided. Provisioning uses classical preseed config files (not new Subiquity installer). Optimized for building qcow2 images for Ironic using QEMU.
 
 ## Usage
 
