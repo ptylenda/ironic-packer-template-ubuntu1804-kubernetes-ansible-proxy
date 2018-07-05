@@ -1,0 +1,44 @@
+---
+- hosts: ubuntu
+  vars:
+    http_proxy: ""
+    https_proxy: ""
+    no_proxy: ""
+    configure_proxy: "{{ True if http_proxy or https_proxy else False }}"
+  environment:
+    HTTP_PROXY: "{{ http_proxy }}"
+    HTTPS_PROXY: "{{ https_proxy }}"
+    NO_PROXY: "{{ no_proxy }}"
+    http_proxy: "{{ http_proxy }}"
+    https_proxy: "{{ https_proxy }}"
+    no_proxy: "{{ no_proxy }}"
+  tasks:
+    - name: Install and configure docker as root
+      become: yes
+      block:
+      - name: Configuring environment proxy
+        lineinfile:
+          dest: /etc/environment
+          line: "{{ item.key }}={{ item.value }}"
+        with_dict:
+          HTTP_PROXY: "{{ http_proxy }}"
+          HTTPS_PROXY: "{{ https_proxy }}"
+          NO_PROXY: "{{ no_proxy }}"
+          http_proxy: "{{ http_proxy }}"
+          https_proxy: "{{ https_proxy }}"
+          no_proxy: "{{ no_proxy }}"
+        when: configure_proxy|bool|default(false)
+      - name: Update all packages to the latest version
+        apt:
+          upgrade: dist
+          update_cache: yes
+      - name: Install required packages
+        apt:
+          name: "{{ item }}"
+          state: present
+          update_cache: no
+        with_items:
+          - apt-transport-https
+          - ca-certificates
+          - curl
+          - software-properties-common
