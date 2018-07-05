@@ -42,3 +42,14 @@
           - ca-certificates
           - curl
           - software-properties-common
+          - cloud-init
+      - name: Copy cloud-init configuration files
+        copy:
+          owner: root
+          group: root
+          mode: 0644
+          src: "{{ item }}"
+          dest: /etc/cloud/cloud.cfg.d/
+        with_items:
+          - "files/cloud-init/99-datasource.cfg"
+          - "files/cloud-init/99-growroot.cfg"
