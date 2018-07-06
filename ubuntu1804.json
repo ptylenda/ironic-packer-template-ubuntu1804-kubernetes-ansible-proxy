@@ -1,7 +1,7 @@
 { 
   "variables": {
     "_comment": "Setting no_proxy in boot_command for hyperv-iso is required in case of using mirror/http/proxy which behaves differently than 'choose-mirror-bin mirror/http/proxy string addr' used in preseed.cfg. Gen 2 VMs do not support floppies, so you are stuck with using preseed/url",  
-    "cpu": "2",
+    "cpu": "4",
     "disk_size": "21440",
     "ftp_proxy": "{{env `ftp_proxy` }}",
     "headless": "true",
