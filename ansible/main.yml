@@ -52,3 +52,8 @@
           dest: /var/lib/cloud/seed/nocloud-net/
         with_items:
           - "files/cloud-init/user-data"
+      - name: Enable service cloud-init and ensure it is not masked
+        systemd:
+          name: cloud-init
+          enabled: yes
+          masked: no
