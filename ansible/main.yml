@@ -49,7 +49,6 @@
           group: root
           mode: 0644
           src: "{{ item }}"
-          dest: /etc/cloud/cloud.cfg.d/
+          dest: /var/lib/cloud/seed/nocloud-net/
         with_items:
-          - "files/cloud-init/99-datasource.cfg"
-          - "files/cloud-init/99-growroot.cfg"
+          - "files/cloud-init/user-data"

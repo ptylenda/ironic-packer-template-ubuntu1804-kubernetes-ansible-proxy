@@ -1,0 +1,13 @@
+#cloud-config
+
+growpart:
+  mode: auto
+  devices: ['/']
+  ignore_growroot_disabled: false
+
+users:
+- name: ubuntu
+  lock-passwd: false
+  gecos: ubuntu
+  groups: [adm, cdrom, dip, lpadmin, plugdev, sambashare, debian-tor, libvirtd, lxd, sudo]
+  shell: /bin/bash
