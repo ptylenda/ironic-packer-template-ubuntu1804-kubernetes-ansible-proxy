@@ -43,6 +43,7 @@
           - curl
           - software-properties-common
           - cloud-init
+          - cloud-utils
       - file:
           path: /var/lib/cloud/seed/nocloud-net/
           state: directory
