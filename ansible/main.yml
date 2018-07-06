@@ -43,6 +43,10 @@
           - curl
           - software-properties-common
           - cloud-init
+      - file:
+          path: /var/lib/cloud/seed/nocloud-net/
+          state: directory
+          recurse: yes
       - name: Copy cloud-init configuration files
         copy:
           owner: root
