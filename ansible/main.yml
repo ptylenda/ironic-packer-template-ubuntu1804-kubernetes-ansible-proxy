@@ -13,7 +13,7 @@
     https_proxy: "{{ https_proxy }}"
     no_proxy: "{{ no_proxy }}"
   tasks:
-    - name: Install and configure docker as root
+    - name: Configure proxy and install cloud-init
       become: yes
       block:
       - name: Configuring environment proxy
@@ -36,7 +36,7 @@
         apt:
           name: "{{ item }}"
           state: present
-          update_cache: no
+          update_cache: yes
         with_items:
           - apt-transport-https
           - ca-certificates
@@ -44,10 +44,7 @@
           - software-properties-common
           - cloud-init
           - cloud-utils
-      - file:
-          path: /var/lib/cloud/seed/nocloud-net/
-          state: directory
-          recurse: yes
+          - vim
       - name: Copy cloud-init configuration files
         copy:
           owner: root
@@ -56,5 +53,9 @@
           src: "{{ item }}"
           dest: /var/lib/cloud/seed/nocloud-net/
         with_items:
-          - "files/cloud-init/user-data"
-          - "files/cloud-init/meta-data"
+          - files/cloud-init/user-data
+          - files/cloud-init/meta-data
+    - name: Ensure that proper .vimrc is copied
+      copy:
+        src: files/.vimrc
+        dest: ~/.vimrc
