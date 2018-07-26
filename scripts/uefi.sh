@@ -2,5 +2,7 @@
 
 mkdir -p /boot/efi/EFI/BOOT
 cp /boot/efi/EFI/ubuntu/* /boot/efi/EFI/BOOT
-mv /boot/efi/EFI/BOOT/shimx64.efi /boot/efi/EFI/BOOT/BOOTX64.EFI
-mv /boot/efi/EFI/ubuntu/shimx64.efi /boot/efi/EFI/ubuntu/BOOTX64.EFI
+cp /boot/efi/EFI/BOOT/shimx64.efi /boot/efi/EFI/BOOT/BOOTX64.EFI
+cp /boot/efi/EFI/BOOT/shimx64.efi /boot/efi/EFI/ubuntu/BOOTX64.EFI
+
+cat 'fs0:\EFI\BOOT\BOOTX64.EFI' > /boot/efi/startup.nsh
