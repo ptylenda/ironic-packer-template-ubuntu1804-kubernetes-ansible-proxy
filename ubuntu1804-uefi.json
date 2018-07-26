@@ -161,7 +161,7 @@
       "pause_before": "15s",
       "scripts": [
         "./scripts/update.sh",
-        "./scripts/hyperv.sh"
+        "./scripts/uefi.sh"
       ],
       "type": "shell"
     },
