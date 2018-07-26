@@ -1,5 +1,7 @@
 #!/bin/bash
 
+export DEBIAN_FRONTEND=noninteractive
+
 purge-old-kernels
 apt-get -y remove --purge ansible
 apt-add-repository --remove ppa:ansible/ansible
